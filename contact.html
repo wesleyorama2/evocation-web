@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+        <script
+        src="html5shiv.js">
+        </script>
+        <![endif]-->
+    <!-- https://feathericons.com -->
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <title>Contact Evocation</title>
+</head>
+
+<body>
+    <div class="top-bar-wrapper">
+        <div class="logo">
+            <img src="images/evocation-small.png" alt="Evocation Logo">
+        </div>
+        <div id="top-bar">
+            <ul id="top-bar-ulist">
+                <i id="top-item"><a class="top-bar-link" href=index.html#home>Home</a></i>
+                <i id="top-item"><a class="top-bar-link" href=index.html#services-spacer>Services</a></i>
+                <i id="top-item"><a class="top-bar-link" href=index.html#focus-spacer>Focus</a></i>
+                <i id="top-item"><a class="top-bar-link" href=contact.html>Contact</a></i>
+            </ul>
+        </div>
+    </div>
+
+    <div id="home" class="bgimg-4">
+        <div class="bgimg-4-caption">
+            <span class="bgimg-4-h1">CONNECT WITH US.</span>
+        </div>
+        <div class="contact">
+            <form id="contact-us" action="#" method="POST">
+                <input type="text" class="name" name="username" placeholder="Your Name" required="">
+                <input type="email" class="email" name="email" placeholder="Your Email" required="">
+                <textarea name="your message" placeholder="Your message"></textarea>
+                <input id="submit" type="submit" value="SEND EMAIL">
+            </form>
+        </div>
+        <div id="osm-map"></div>
+    </div>
+
+    <script>
+        // Where you want to render the map.
+        var element = document.getElementById('osm-map');
+
+        // Create Leaflet map on map element.
+        var map = L.map(element);
+
+        // Add OSM tile leayer to the Leaflet map.
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Target's GPS coordinates.
+        var target = L.latLng('36.335427', '-94.1594721');
+
+        // Set map's center to target with zoom 14.
+        map.setView(target, 14);
+
+        // Place a marker on the same location.
+        var marker = L.marker(target).addTo(map);
+
+        // Bind popup to the marker with a popup 
+        marker.bindPopup("7 Halsted Circle, Rogers, Ar 72756").openPopup(); 
+    </script>
+</body>
+
+</html>
